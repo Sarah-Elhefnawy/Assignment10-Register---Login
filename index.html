@@ -44,7 +44,8 @@
                     <label for="floatingInputSignUp">Enter your email</label>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="password" class="form-control" id="floatingPasswordSignUp" placeholder="Enter your password">
+                    <input type="password" class="form-control" id="floatingPasswordSignUp"
+                        placeholder="Enter your password">
                     <label for="floatingPasswordSignUp">Enter your password</label>
                 </div>
                 <button id="signupBtn" type="button" class="btn btn-outline-info w-100 my-3">Sign Up</button>
@@ -52,6 +53,35 @@
                     <a href="#" id="openLogIn" class="text-white">Signin</a>
                 </p>
             </form>
+        </section>
+
+        <!-- Home Section -->
+        <section id="home" class="d-none">
+            <!-- Navbar Section -->
+            <nav class="navbar navbar-expand-lg navbar-dark shadow-lg">
+                <div class="container">
+                    <a class="navbar-brand fw-medium text-uppercase" href="#">Smart Login</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-nav ms-auto">
+                            <button id="logout" type="button" class="btn btn-outline-warning mt-3 mt-lg-0">Log
+                                Out</button>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+
+            <!-- Header Section -->
+            <header>
+                <div class="home position-absolute top-50 start-50 translate-middle p-5 w-75">
+                    <h1>Welcome <p></p>
+                    </h1>
+                </div>
+            </header>
         </section>
     </main>
     <script src="./js/bootstrap.bundle.min.js"></script>

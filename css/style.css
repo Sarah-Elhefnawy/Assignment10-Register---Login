@@ -3,10 +3,11 @@
     --bs-body-color: #fff;
     --bs-body-color-rgb: #fff;
     --bs-body-bg: #24353F;
+    --shadow: #000;
 }
 
 main {
-    background-color: #24353F;
+    background-color: var(--bs-body-bg);
 }
 
 @font-face {
@@ -14,7 +15,16 @@ main {
     src: url(./../fonts/Titillium_Web/TitilliumWeb-Regular.ttf);
 }
 
-/* Login Section */
+section>form,
+section .home {
+    font-family: "Titillium Web", sans-serif;
+    box-shadow: -5px 2px 54px -9px var(--shadow);
+}
+
+.btn {
+    --bs-btn-hover-color: var(--bs-body-color);
+}
+
 h1 {
     color: #17a2b8;
     font-family: "Titillium Web", sans-serif;
@@ -24,11 +34,7 @@ h1 {
     text-align: center;
 }
 
-form {
-    font-family: "Titillium Web", sans-serif;
-    box-shadow: -5px 2px 54px -9px rgba(0, 0, 0, 1);
-}
-
+/* Login Section */
 .form-control {
     padding: 2px 6px;
     --bs-border-radius: 4px;
@@ -43,14 +49,23 @@ form {
     border: var(--bs-border-width) solid transparent;
 }
 
-.btn-outline-info {
-    --bs-btn-hover-color: #fff;
-}
-
 p a {
     text-decoration: none;
 }
 
 p a:hover {
     text-decoration: underline;
+}
+
+/* Navbar Section */
+button:focus {
+    border: var(--shadow) 2px solid;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.15rem;
+}
+
+.navbar-nav button {
+    color: #778188;
 }
