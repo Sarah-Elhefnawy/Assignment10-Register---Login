@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/all.min.css">
+    <link rel="stylesheet" href="./css/bootstrap.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Login</title>
+</head>
+
+<body>
+    <main>
+        <!-- Login Section -->
+        <section id="login" class="login min-vh-100 d-block">
+            <form class="position-absolute top-50 start-50 translate-middle m-auto p-5 w-75">
+                <h1>Smart Login System</h1>
+                <div class="form-floating my-3">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="Enter your email">
+                    <label for="floatingInput">Enter your email</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Enter your password">
+                    <label for="floatingPassword">Enter your password</label>
+                </div>
+                <button id="loginBtn" type="button" class="btn btn-outline-info w-100 my-3">Login</button>
+                <p class="mb-3 text-center text-white">Don’t have an account?
+                    <a href="#" id="register" class="text-white">Sign Up</a>
+                </p>
+            </form>
+        </section>
+
+        <!-- SignUp Section -->
+        <section id="signup" class="signup min-vh-100 d-none">
+            <form class="position-absolute top-50 start-50 translate-middle m-auto p-5 w-75">
+                <h1>Smart Sign Up System</h1>
+                <div class="form-floating my-3">
+                    <input type="text" class="form-control" id="floatingNameSignUp" placeholder="Enter your name">
+                    <label for="floatingNameSignUp">Enter your name</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="email" class="form-control" id="floatingInputSignUp" placeholder="Enter your email">
+                    <label for="floatingInputSignUp">Enter your email</label>
+                </div>
+                <div class="form-floating my-3">
+                    <input type="password" class="form-control" id="floatingPasswordSignUp" placeholder="Enter your password">
+                    <label for="floatingPasswordSignUp">Enter your password</label>
+                </div>
+                <button id="signupBtn" type="button" class="btn btn-outline-info w-100 my-3">Sign Up</button>
+                <p class="mb-3 text-center text-white">You have an account?
+                    <a href="#" id="openLogIn" class="text-white">Signin</a>
+                </p>
+            </form>
+        </section>
+    </main>
+    <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
