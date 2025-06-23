@@ -13,17 +13,18 @@
 <body>
     <main>
         <!-- Login Section -->
-        <section id="login" class="login min-vh-100 d-block">
-            <form class="position-absolute top-50 start-50 translate-middle m-auto p-5 w-75">
+        <section id="login" class="login vh-100 d-block">
+            <form class="position-absolute top-50 start-50 translate-middle mx-auto p-5 w-75 box-custom-shadow">
                 <h1>Smart Login System</h1>
                 <div class="form-floating my-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="Enter your email">
-                    <label for="floatingInput">Enter your email</label>
+                    <input type="email" class="form-control" id="emailLogIn" placeholder="Enter your email">
+                    <label for="emailLogIn">Enter your email</label>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Enter your password">
-                    <label for="floatingPassword">Enter your password</label>
+                    <input type="password" class="form-control" id="PasswordLogIn" placeholder="Enter your password">
+                    <label for="PasswordLogIn">Enter your password</label>
                 </div>
+                <p id="errorLogIn" class="text-center text-danger d-none"></p>
                 <button id="loginBtn" type="button" class="btn btn-outline-info w-100 my-3">Login</button>
                 <p class="mb-3 text-center text-white">Don’t have an account?
                     <a href="#" id="register" class="text-white">Sign Up</a>
@@ -32,22 +33,22 @@
         </section>
 
         <!-- SignUp Section -->
-        <section id="signup" class="signup min-vh-100 d-none">
-            <form class="position-absolute top-50 start-50 translate-middle m-auto p-5 w-75">
+        <section id="signup" class="signup vh-100 d-none">
+            <form class="position-absolute top-50 start-50 translate-middle m-auto p-5 w-75 box-custom-shadow">
                 <h1>Smart Sign Up System</h1>
                 <div class="form-floating my-3">
-                    <input type="text" class="form-control" id="floatingNameSignUp" placeholder="Enter your name">
-                    <label for="floatingNameSignUp">Enter your name</label>
+                    <input type="text" class="form-control" id="NameSignUp" placeholder="Enter your name">
+                    <label for="NameSignUp">Enter your name</label>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="email" class="form-control" id="floatingInputSignUp" placeholder="Enter your email">
-                    <label for="floatingInputSignUp">Enter your email</label>
+                    <input type="email" class="form-control" id="emailSignUp" placeholder="Enter your email">
+                    <label for="emailSignUp">Enter your email</label>
                 </div>
                 <div class="form-floating my-3">
-                    <input type="password" class="form-control" id="floatingPasswordSignUp"
-                        placeholder="Enter your password">
-                    <label for="floatingPasswordSignUp">Enter your password</label>
+                    <input type="password" class="form-control" id="PasswordSignUp" placeholder="Enter your password">
+                    <label for="PasswordSignUp">Enter your password</label>
                 </div>
+                <p id="errorSignUp" class="text-center text-danger d-none"></p>
                 <button id="signupBtn" type="button" class="btn btn-outline-info w-100 my-3">Sign Up</button>
                 <p class="mb-3 text-center text-white">You have an account?
                     <a href="#" id="openLogIn" class="text-white">Signin</a>
@@ -58,7 +59,7 @@
         <!-- Home Section -->
         <section id="home" class="d-none">
             <!-- Navbar Section -->
-            <nav class="navbar navbar-expand-lg navbar-dark shadow-lg">
+            <nav class="navbar navbar-expand-lg navbar-dark box-custom-shadow">
                 <div class="container">
                     <a class="navbar-brand fw-medium text-uppercase" href="#">Smart Login</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -77,8 +78,8 @@
 
             <!-- Header Section -->
             <header>
-                <div class="home position-absolute top-50 start-50 translate-middle p-5 w-75">
-                    <h1>Welcome <p></p>
+                <div class="home position-absolute top-50 start-50 translate-middle p-5 w-75 mt-5 box-custom-shadow">
+                    <h1>Welcome <span id="userName"></span>
                     </h1>
                 </div>
             </header>

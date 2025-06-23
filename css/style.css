@@ -10,13 +10,16 @@ main {
     background-color: var(--bs-body-bg);
 }
 
+body {
+    background-color: #24353F;
+}
+
 @font-face {
     font-family: "Titillium Web";
     src: url(./../fonts/Titillium_Web/TitilliumWeb-Regular.ttf);
 }
 
-section>form,
-section .home {
+.box-custom-shadow {
     font-family: "Titillium Web", sans-serif;
     box-shadow: -5px 2px 54px -9px var(--shadow);
 }
@@ -66,6 +69,7 @@ button:focus {
     box-shadow: 0 0 0 0.15rem;
 }
 
-.navbar-nav button {
-    color: #778188;
+.navbar-nav .btn-outline-warning {
+    --bs-btn-color: #778188;
+    --bs-btn-hover-color: #fff;
 }
