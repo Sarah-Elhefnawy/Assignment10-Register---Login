@@ -99,7 +99,7 @@ loginBtn.addEventListener("click", function () {
     login.classList.replace("d-block", "d-none");
     clear();
     errorDisplayNone();
-    userName.innerHTML += userFound.name;
+    userName.innerHTML = userFound.name;
 });
 
 // Open LogIn
