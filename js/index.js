@@ -19,21 +19,22 @@ const allUsers = JSON.parse(localStorage.getItem("allUsers")) || [];
 
 // Add User
 signupBtn.addEventListener("click", function () {
+    hideError(errorSignUp);
     const name = nameSignUpInput.value.trim();
     const email = emailSignUpInput.value.trim();
     const password = passwordSignUpInput.value.trim();
 
-    // Check if all inputs are filled
     if (!name || !email || !password) {
-        errorSignUp.classList.replace("d-none", "d-block");
-        errorSignUp.innerHTML = "All inputs are required";
+        showError(errorSignUp, "All inputs are required");
         return;
     }
 
-    // Check if email is already taken
-    if (!isEmailValid(email)) {
-        errorSignUp.classList.replace("d-none", "d-block");
-        errorSignUp.innerHTML = "Email is already taken";
+    if (isEmailTaken(email)) {
+        showError(errorSignUp, "Email is already taken");
+        return;
+    }
+
+    if (!nameValidation(name) || !emailValidation(email) || !passwordValidation(password)) {
         return;
     }
 
@@ -43,34 +44,28 @@ signupBtn.addEventListener("click", function () {
         password: password
     };
     allUsers.push(user);
-    saveUserInLocalStorage();
+    localStorage.setItem("allUsers", JSON.stringify(allUsers));
     returnToLogIn();
-    clear();
-    errorDisplayNone();
+    clearInputs();
 });
 
 // Open Sign Up
 register.addEventListener("click", function () {
-    login.classList.replace("d-block", "d-none");
-    signup.classList.replace("d-none", "d-block");
+    toggleDisplay(login, false);
+    toggleDisplay(signup, true);
 });
-
-// Save User in Local Storage
-function saveUserInLocalStorage() {
-    localStorage.setItem("allUsers", JSON.stringify(allUsers));
-}
 
 // Open Home
 loginBtn.addEventListener("click", function () {
     const email = emailLogInInput.value.trim();
     const password = passwordLogInInput.value.trim();
     var userFound = null;
+    hideError(errorLogIn);
 
     // Check if all inputs are filled
     if (!email || !password) {
-        errorLogIn.classList.replace("d-none", "d-block");
-        errorLogIn.innerHTML = "All inputs are required";
-        return
+        showError(errorLogIn, "All inputs are required");
+        return;
     }
 
     // Find the user and save it in userFound
@@ -83,38 +78,36 @@ loginBtn.addEventListener("click", function () {
 
     // Check email
     if (userFound === null) {
-        errorLogIn.classList.replace("d-none", "d-block");
-        errorLogIn.innerHTML = "Email is incorrect";
+        showError(errorLogIn, "Email is incorrect");
         return;
     }
 
     // Check password
     if (password != userFound.password) {
-        errorLogIn.classList.replace("d-none", "d-block");
-        errorLogIn.innerHTML = "Password is incorrect";
+        showError(errorLogIn, "Password is incorrect");
         return;
     }
 
-    home.classList.replace("d-none", "d-block");
-    login.classList.replace("d-block", "d-none");
-    clear();
-    errorDisplayNone();
+    toggleDisplay(home, true);
+    toggleDisplay(login, false);
     userName.innerHTML = userFound.name;
+    clearInputs();
 });
 
 // Open LogIn
 function returnToLogIn() {
-    login.classList.replace("d-none", "d-block");
-    home.classList.replace("d-block", "d-none");
-    signup.classList.replace("d-block", "d-none");
-    clear();
-    errorDisplayNone();
+    toggleDisplay(login, true);
+    toggleDisplay(home, false);
+    toggleDisplay(signup, false);
+    clearInputs();
+    hideError(errorLogIn);
+    hideError(errorSignUp);
 }
 logout.addEventListener("click", returnToLogIn);
 openLogInBtn.addEventListener("click", returnToLogIn);
 
 // clear function
-function clear() {
+function clearInputs() {
     emailLogInInput.value = "";
     passwordLogInInput.value = "";
     nameSignUpInput.value = "";
@@ -122,18 +115,57 @@ function clear() {
     passwordSignUpInput.value = "";
 }
 
-// Remove error messages
-function errorDisplayNone() {
-    errorLogIn.classList.replace("d-block", "d-none");
-    errorSignUp.classList.replace("d-block", "d-none");
+function toggleDisplay(element, show) {
+    element.classList.toggle('d-block', show);
+    element.classList.toggle('d-none', !show);
 }
 
-// check if email is valid
-function isEmailValid(email) {
+function showError(element, message) {
+    element.classList.replace('d-none', 'd-block');
+    element.innerHTML = message;
+}
+
+function hideError(element) {
+    element.classList.replace('d-block', 'd-none');
+}
+
+// Check if email is taken
+function isEmailTaken(email) {
     for (let index = 0; index < allUsers.length; index++) {
         if (allUsers[index].email == email) {
-            return false;
+            return true;
         }
+    }
+    return false
+}
+
+// Check Name input validation
+function nameValidation(name) {
+    var regex = /^[A-Z][a-z]{3,}$/;
+    if (!regex.test(name)) {
+        showError(errorSignUp, "Name must be at least 3 characters and start with a capital letter");
+        return false;
+    }
+    return true;
+}
+
+// Check Email input validation
+function emailValidation(email) {
+    // \w => Matches any word character (alphanumeric & underscore).
+    var regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!regex.test(email)) {
+        showError(errorSignUp, "Email syntax is incorrect");
+        return false;
+    }
+    return true;
+}
+
+// Check Email input validation
+function passwordValidation(password) {
+    var regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).+$/;
+    if (!regex.test(password)) {
+        showError(errorSignUp, "Password must contain uppercase, lowercase, number, and special character");
+        return false;
     }
     return true;
 }
